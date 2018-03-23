@@ -19,7 +19,7 @@ class TodolistViewController: UITableViewController {
         super.viewDidLoad()
 
         print(dataFilePath)
-//        loadItem()
+        loadItem()
     }
     //MARK: - TableView Datasource Methods
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,8 +81,8 @@ class TodolistViewController: UITableViewController {
       tableView.reloadData()
     }
     //    TODO: retrieve data
-    func loadItem(){
-        let request : NSFetchRequest<Item> = Item.fetchRequest()
+    func loadItem(with request : NSFetchRequest<Item> = Item.fetchRequest()){
+        
         do
         {
           itemArray = try context.fetch(request)
@@ -93,4 +93,30 @@ class TodolistViewController: UITableViewController {
 
 }
 
+}
+//MARK:- Search Bar Methods
+extension TodolistViewController : UISearchBarDelegate{
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        
+        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+        
+        request.sortDescriptors  = [NSSortDescriptor(key: "title", ascending: true)]
+        
+        loadItem(with: request)
+    }
+    //    TODO: go back to original list
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+           loadItem()
+            
+            DispatchQueue.main.async {
+                
+          searchBar.resignFirstResponder()
+                
+            }
+            
+        }
+    }
+    
 }
