@@ -15,7 +15,10 @@ class TodolistViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        if let items = defaults.array(forKey: "TodolistArray") as?   [String]{
+            itemArray = items
+            
+        }
     }
     //MARK: - TableView Datasource Methods
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,6 +49,7 @@ class TodolistViewController: UITableViewController {
         let alert = UIAlertController(title: "Add New Items", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add", style: .default) { (alertAction) in
             self.itemArray.append(textField.text!)
+            self.defaults.set(self.itemArray, forKey: "TodolistArray")
             self.tableView.reloadData()
         }
         alert.addTextField { (alertTextField) in
