@@ -15,6 +15,7 @@
 		EA2C548420654333000BD624 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA2C548220654333000BD624 /* Main.storyboard */; };
 		EA2C548620654333000BD624 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA2C548520654333000BD624 /* Assets.xcassets */; };
 		EA2C548920654333000BD624 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA2C548720654333000BD624 /* LaunchScreen.storyboard */; };
+		EA8138D6206ABCBC009F68D4 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8138D5206ABCBC009F68D4 /* SwipeTableViewController.swift */; };
 		EABEC5A02065894E00021FCF /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABEC59F2065894E00021FCF /* CategoryTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		EA2C548520654333000BD624 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA2C548820654333000BD624 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA2C548A20654333000BD624 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA8138D5206ABCBC009F68D4 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		EABEC59F2065894E00021FCF /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +109,7 @@
 				EABEC59F2065894E00021FCF /* CategoryTableViewController.swift */,
 				EA2C548020654333000BD624 /* TodolistViewController.swift */,
 				EA2C547E20654333000BD624 /* AppDelegate.swift */,
+				EA8138D5206ABCBC009F68D4 /* SwipeTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				EA2C547F20654333000BD624 /* AppDelegate.swift in Sources */,
 				EA299B67206966D400555088 /* Item.swift in Sources */,
 				EABEC5A02065894E00021FCF /* CategoryTableViewController.swift in Sources */,
+				EA8138D6206ABCBC009F68D4 /* SwipeTableViewController.swift in Sources */,
 				EA299B69206966E600555088 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
