@@ -15,6 +15,7 @@ class TodolistViewController: SwipeTableViewController {
     var toDoItems : Results<Item>?
     let realm = try! Realm()
     
+    @IBOutlet weak var searchBar: UISearchBar!
     var selectedCategory : Category?{
         didSet{
             loadItem()
@@ -23,10 +24,21 @@ class TodolistViewController: SwipeTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-     
        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+         title = selectedCategory?.name
+        guard let colourHex = selectedCategory?.colour else{fatalError()}
+       updateNavbar(withHexCode: colourHex)
+
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        updateNavbar(withHexCode: "1D9BF6")
+    }
+    
     //MARK: - TableView Datasource Methods
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
@@ -76,6 +88,8 @@ class TodolistViewController: SwipeTableViewController {
     
       tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+
 
 
     //MARK: - Add New Items
@@ -135,6 +149,16 @@ class TodolistViewController: SwipeTableViewController {
             }
             
         }
+    //    MARK: - update Nav Bar colour
+    
+    func updateNavbar(withHexCode HexCodeColour:String ){
+        guard let navBar = navigationController?.navigationBar else{fatalError("error")}
+        guard let navBarColour = UIColor(hexString:HexCodeColour) else{fatalError()}
+        navBar.barTintColor = navBarColour
+        searchBar.barTintColor = navBarColour
+        navBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor : ContrastColorOf(navBarColour, returnFlat: true)]
+        navBar.tintColor = ContrastColorOf(navBarColour, returnFlat: true)
+    }
     
 
 }
